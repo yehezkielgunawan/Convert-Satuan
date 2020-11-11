@@ -199,7 +199,7 @@ export default function weight() {
       <Footer textAlign="center">
         <Text>
           Made by Yehezkiel Gunawan using <Code>NextJS</Code> and{" "}
-          <Code>Chakra UI TEST</Code>
+          <Code>Chakra UI</Code>
         </Text>
       </Footer>
       <CTA />
