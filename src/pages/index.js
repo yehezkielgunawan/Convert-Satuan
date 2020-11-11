@@ -16,7 +16,7 @@ import { Footer } from "../components/Footer";
 
 const Index = () => (
   <Container>
-    <Hero title="CONVERT WHAT?" />
+    <Hero title="CONVERT WHAT TEST?" />
     <Main>
       <Text textAlign="center">Select what you want to convert.</Text>
 
