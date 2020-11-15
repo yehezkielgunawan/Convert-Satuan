@@ -1,10 +1,19 @@
-import { Code, Text } from "@chakra-ui/core";
+import {
+  Box,
+  Code,
+  NumberInput,
+  NumberInputField,
+  SimpleGrid,
+  Text,
+} from "@chakra-ui/core";
+import { useEffect, useState } from "react";
 import { Container } from "../components/Container";
 import { CTA } from "../components/CTA";
 import { DarkModeSwitch } from "../components/DarkModeSwitch";
 import { Footer } from "../components/Footer";
 import { Hero } from "../components/Hero";
 import { Main } from "../components/Main";
+import { SelectComponent } from "../components/SelectComponent";
 
 const weightOptions = [
   { value: "tonne", label: "Tonne" },
@@ -16,7 +25,7 @@ const weightOptions = [
   { value: "ounce", label: "Ounce" },
 ];
 
-let optionsItems = weightOptions.map((weight) => (
+let optionsWeight = weightOptions.map((weight) => (
   <option key={weight.value} value={weight.value}>
     {weight.label}
   </option>
@@ -191,10 +200,160 @@ function OunceToPound(number) {
 }
 
 export default function weight() {
+  const [baseWeight, setBaseWeight] = useState(0);
+  const [resultWeight, setResultWeight] = useState(0);
+  const [base, setBase] = useState("");
+  const [to, setTo] = useState("");
+
+  const getFrom = (e) => {
+    setBase(e.target.value);
+  };
+
+  const getFromValue = (e) => {
+    setBaseWeight(e.target.value);
+  };
+
+  const getTo = (e) => {
+    setTo(e.target.value);
+  };
+
+  useEffect(() => {
+    if (isNaN(resultWeight)) {
+      setBaseWeight(0);
+    }
+
+    if (base === to) {
+      setResultWeight(parseFloat(baseWeight));
+    }
+
+    if (base === "tonne") {
+      if (to === "kilogram") {
+        setResultWeight(TonneToKilogram(parseFloat(baseWeight)));
+      } else if (to === "gram") {
+        setResultWeight(TonneToGram(parseFloat(baseWeight)));
+      } else if (to === "miligram") {
+        setResultWeight(TonneToMiliGram(parseFloat(baseWeight)));
+      } else if (to === "microgram") {
+        setResultWeight(TonneToMicroGram(parseFloat(baseWeight)));
+      } else if (to === "pound") {
+        setResultWeight(TonneToPound(parseFloat(baseWeight)));
+      } else if (to === "ounce") {
+        setResultWeight(TonneToOunce(parseFloat(baseWeight)));
+      }
+    } else if (base === "kilogram") {
+      if (to === "tonne") {
+        setResultWeight(KiloGramToTonne(parseFloat(baseWeight)));
+      } else if (to === "gram") {
+        setResultWeight(KiloGramToGram(parseFloat(baseWeight)));
+      } else if (to === "miligram") {
+        setResultWeight(KiloGramToMiligram(parseFloat(baseWeight)));
+      } else if (to === "microgram") {
+        setResultWeight(KiloGramToMicrogram(parseFloat(baseWeight)));
+      } else if (to === "pound") {
+        setResultWeight(KiloGramToPound(parseFloat(baseWeight)));
+      } else if (to === "ounce") {
+        setResultWeight(KiloGramToOunce(parseFloat(baseWeight)));
+      }
+    } else if (base === "gram") {
+      if (to === "tonne") {
+        setResultWeight(GramToTonne(parseFloat(baseWeight)));
+      } else if (to === "kilogram") {
+        setResultWeight(GramToKilogram(parseFloat(baseWeight)));
+      } else if (to === "miligram") {
+        setResultWeight(GramToMiligram(parseFloat(baseWeight)));
+      } else if (to === "microgram") {
+        setResultWeight(GramToMicrogram(parseFloat(baseWeight)));
+      } else if (to === "pound") {
+        setResultWeight(GramToPound(parseFloat(baseWeight)));
+      } else if (to === "ounce") {
+        setResultWeight(GramToOunce(parseFloat(baseWeight)));
+      }
+    } else if (base === "miligram") {
+      if (to === "tonne") {
+        setResultWeight(MiligramToTonne(parseFloat(baseWeight)));
+      } else if (to === "kilogram") {
+        setResultWeight(MiligramToKilogram(parseFloat(baseWeight)));
+      } else if (to === "gram") {
+        setResultWeight(MiligramToGram(parseFloat(baseWeight)));
+      } else if (to === "microgram") {
+        setResultWeight(MiligramToMicrogram(parseFloat(baseWeight)));
+      } else if (to === "pound") {
+        setResultWeight(MiligramToPound(parseFloat(baseWeight)));
+      } else if (to === "ounce") {
+        setResultWeight(MiligramToOunce(parseFloat(baseWeight)));
+      }
+    } else if (base === "microgram") {
+      if (to === "tonne") {
+        setResultWeight(MicrogramToTonne(parseFloat(baseWeight)));
+      } else if (to === "kilogram") {
+        setResultWeight(MicrogramToKilogram(parseFloat(baseWeight)));
+      } else if (to === "gram") {
+        setResultWeight(MicrogramToGram(parseFloat(baseWeight)));
+      } else if (to === "miligram") {
+        setResultWeight(MicrogramToMiligram(parseFloat(baseWeight)));
+      } else if (to === "pound") {
+        setResultWeight(MicrogramToPound(parseFloat(baseWeight)));
+      } else if (to === "ounce") {
+        setResultWeight(MicrogramToOunce(parseFloat(baseWeight)));
+      }
+    } else if (base === "pound") {
+      if (to === "tonne") {
+        setResultWeight(PoundToTonne(parseFloat(baseWeight)));
+      } else if (to === "kilogram") {
+        setResultWeight(PoundToKilogram(parseFloat(baseWeight)));
+      } else if (to === "gram") {
+        setResultWeight(PoundToGram(parseFloat(baseWeight)));
+      } else if (to === "miligram") {
+        setResultWeight(PoundToMiligram(parseFloat(baseWeight)));
+      } else if (to === "microgram") {
+        setResultWeight(PoundToMicrogram(parseFloat(baseWeight)));
+      } else if (to === "ounce") {
+        setResultWeight(PoundToOunce(parseFloat(baseWeight)));
+      }
+    } else if (base === "ounce") {
+      if (to === "tonne") {
+        setResultWeight(OunceToTonne(parseFloat(baseWeight)));
+      } else if (to === "kilogram") {
+        setResultWeight(OunceToKilogram(parseFloat(baseWeight)));
+      } else if (to === "gram") {
+        setResultWeight(OunceToGram(parseFloat(baseWeight)));
+      } else if (to === "miligram") {
+        setResultWeight(OunceToMiligram(parseFloat(baseWeight)));
+      } else if (to === "microgram") {
+        setResultWeight(OunceToMicrogram(parseFloat(baseWeight)));
+      } else if (to === "pound") {
+        setResultWeight(OunceToPound(parseFloat(baseWeight)));
+      }
+    }
+  });
+
   return (
     <Container>
       <Hero title="Weight Converter"></Hero>
-      <Main></Main>
+      <Main>
+        <SimpleGrid columns={2} spacing={5}>
+          <Box>
+            <NumberInput mb={0} min={-100}>
+              <NumberInputField onChange={getFromValue} />
+            </NumberInput>
+            <SelectComponent
+              options={optionsWeight}
+              title="From"
+              handleChange={getFrom}
+            ></SelectComponent>
+          </Box>
+          <Box>
+            <NumberInput mb={0} min={-100} isReadOnly>
+              <NumberInputField value={resultWeight} />
+            </NumberInput>
+            <SelectComponent
+              options={optionsWeight}
+              title="To"
+              handleChange={getTo}
+            ></SelectComponent>
+          </Box>
+        </SimpleGrid>
+      </Main>
       <DarkModeSwitch />
       <Footer textAlign="center">
         <Text>
