@@ -24,9 +24,9 @@ const temperatureOptions = [
 ];
 
 const negativeOrPositive = [
-  {value: "positive", label: "+"},
-  {value: "negative", label: "-"},
-]
+  { value: "positive", label: "+" },
+  { value: "negative", label: "-" },
+];
 
 let optionsItems = temperatureOptions.map((temperature) => (
   <option key={temperature.value} value={temperature.value}>
@@ -99,10 +99,10 @@ export default function Temperature() {
   };
 
   const getFormValue = (e) => {
-    if(operator === "positive"){
-      setBaseTemperature(e.target.value);
-    } else {
-      setBaseTemperature(e.target.value * - 1);
+    if (operator === "negative") {
+      setBaseTemperature(e.target.value * -1);
+    } else{
+      setBaseTemperature(e.target.value)
     }
   };
 
@@ -110,9 +110,9 @@ export default function Temperature() {
     setTo(e.target.value);
   };
 
-  const getOperator = e => {
+  const getOperator = (e) => {
     setOperator(e.target.value);
-  }
+  };
 
   useEffect(() => {
     if (isNaN(resultTemperature)) {
@@ -122,7 +122,6 @@ export default function Temperature() {
     if (base === to) {
       setResultTemperature(parseFloat(baseTemperature));
     }
-
 
     if (base === "celcius") {
       if (to === "fahrenheit") {
@@ -171,7 +170,10 @@ export default function Temperature() {
           <SimpleGrid columns={2} spacing={5}>
             <Box>
               <NumberInput mb={0} min={-100}>
-                <SelectComponent options={optionsOperator}></SelectComponent>
+                <SelectComponent
+                  options={optionsOperator}
+                  handleChange={getOperator}
+                ></SelectComponent>
                 <NumberInputField onChange={getFormValue} />
               </NumberInput>
               <SelectComponent
