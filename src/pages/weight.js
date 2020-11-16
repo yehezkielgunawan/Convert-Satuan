@@ -6,6 +6,7 @@ import {
   SimpleGrid,
   Text,
 } from "@chakra-ui/core";
+import Head from "next/head";
 import { useEffect, useState } from "react";
 import { Container } from "../components/Container";
 import { CTA } from "../components/CTA";
@@ -328,40 +329,46 @@ export default function weight() {
   });
 
   return (
-    <Container>
-      <Hero title="Weight Converter"></Hero>
-      <Main>
-        <SimpleGrid columns={2} spacing={5}>
-          <Box>
-            <NumberInput mb={0} min={-100}>
-              <NumberInputField onChange={getFromValue} />
-            </NumberInput>
-            <SelectComponent
-              options={optionsWeight}
-              title="From"
-              handleChange={getFrom}
-            ></SelectComponent>
-          </Box>
-          <Box>
-            <NumberInput mb={0} min={-100} isReadOnly>
-              <NumberInputField value={resultWeight} />
-            </NumberInput>
-            <SelectComponent
-              options={optionsWeight}
-              title="To"
-              handleChange={getTo}
-            ></SelectComponent>
-          </Box>
-        </SimpleGrid>
-      </Main>
-      <DarkModeSwitch />
-      <Footer textAlign="center">
-        <Text>
-          Made by Yehezkiel Gunawan using <Code>NextJS</Code> and{" "}
-          <Code>Chakra UI</Code>
-        </Text>
-      </Footer>
-      <CTA />
-    </Container>
+    <div>
+      <Head>
+        <title>Weight Converter</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <Container>
+        <Hero title="Weight Converter"></Hero>
+        <Main>
+          <SimpleGrid columns={2} spacing={5}>
+            <Box>
+              <NumberInput mb={0} min={-100}>
+                <NumberInputField onChange={getFromValue} />
+              </NumberInput>
+              <SelectComponent
+                options={optionsWeight}
+                title="From"
+                handleChange={getFrom}
+              ></SelectComponent>
+            </Box>
+            <Box>
+              <NumberInput mb={0} min={-100} isReadOnly>
+                <NumberInputField value={resultWeight} />
+              </NumberInput>
+              <SelectComponent
+                options={optionsWeight}
+                title="To"
+                handleChange={getTo}
+              ></SelectComponent>
+            </Box>
+          </SimpleGrid>
+        </Main>
+        <DarkModeSwitch />
+        <Footer textAlign="center">
+          <Text>
+            Made by Yehezkiel Gunawan using <Code>NextJS</Code> and{" "}
+            <Code>Chakra UI</Code>
+          </Text>
+        </Footer>
+        <CTA />
+      </Container>
+    </div>
   );
 }

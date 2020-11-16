@@ -21,7 +21,7 @@ export const CTA = ({ ishome }) => {
 
         <ChakraLink
           isExternal
-          href="https://github.com/vercel/next.js/blob/canary/examples/with-chakra-ui"
+          href="https://github.com/yehezkielgunawan/Convert-Satuan"
           flexGrow={3}
           mx={2}
         >

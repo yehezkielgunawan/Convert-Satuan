@@ -6,6 +6,7 @@ import {
   SimpleGrid,
   Text,
 } from "@chakra-ui/core";
+import Head from "next/head";
 import { useEffect, useState } from "react";
 import { Container } from "../components/Container";
 import { CTA } from "../components/CTA";
@@ -22,9 +23,19 @@ const temperatureOptions = [
   { value: "fahrenheit", label: "Fahrenheit" },
 ];
 
+const negativeOrPositive = [
+  {value: "positive", label: "+"},
+  {value: "negative", label: "-"},
+]
+
 let optionsItems = temperatureOptions.map((temperature) => (
   <option key={temperature.value} value={temperature.value}>
     {temperature.label}
+  </option>
+));
+let optionsOperator = negativeOrPositive.map((operator) => (
+  <option key={operator.value} value={operator.value}>
+    {operator.label}
   </option>
 ));
 
@@ -79,6 +90,7 @@ function FahrenheitToKelvin(number) {
 export default function Temperature() {
   const [baseTemperature, setBaseTemperature] = useState(0);
   const [resultTemperature, setResultTemperature] = useState(0);
+  const [operator, setOperator] = useState(0);
   const [base, setBase] = useState("");
   const [to, setTo] = useState("");
 
@@ -87,12 +99,20 @@ export default function Temperature() {
   };
 
   const getFormValue = (e) => {
-    setBaseTemperature(e.target.value);
+    if(operator === "positive"){
+      setBaseTemperature(e.target.value);
+    } else {
+      setBaseTemperature(e.target.value * - 1);
+    }
   };
 
   const getTo = (e) => {
     setTo(e.target.value);
   };
+
+  const getOperator = e => {
+    setOperator(e.target.value);
+  }
 
   useEffect(() => {
     if (isNaN(resultTemperature)) {
@@ -102,6 +122,7 @@ export default function Temperature() {
     if (base === to) {
       setResultTemperature(parseFloat(baseTemperature));
     }
+
 
     if (base === "celcius") {
       if (to === "fahrenheit") {
@@ -139,40 +160,47 @@ export default function Temperature() {
   });
 
   return (
-    <Container>
-      <Hero title="Temperature Converter"></Hero>
-      <Main>
-        <SimpleGrid columns={2} spacing={5}>
-          <Box>
-            <NumberInput mb={0} min={-100}>
-              <NumberInputField onChange={getFormValue} />
-            </NumberInput>
-            <SelectComponent
-              options={optionsItems}
-              title="From"
-              handleChange={getFrom}
-            ></SelectComponent>
-          </Box>
-          <Box>
-            <NumberInput mb={0} isReadOnly>
-              <NumberInputField value={resultTemperature} />
-            </NumberInput>
-            <SelectComponent
-              options={optionsItems}
-              title="To"
-              handleChange={getTo}
-            ></SelectComponent>
-          </Box>
-        </SimpleGrid>
-      </Main>
-      <DarkModeSwitch />
-      <Footer textAlign="center">
-        <Text>
-          Made by Yehezkiel Gunawan using <Code>NextJS</Code> and{" "}
-          <Code>Chakra UI</Code>
-        </Text>
-      </Footer>
-      <CTA />
-    </Container>
+    <div>
+      <Head>
+        <title>Temperature Converter</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <Container>
+        <Hero title="Temperature Converter"></Hero>
+        <Main>
+          <SimpleGrid columns={2} spacing={5}>
+            <Box>
+              <NumberInput mb={0} min={-100}>
+                <SelectComponent options={optionsOperator}></SelectComponent>
+                <NumberInputField onChange={getFormValue} />
+              </NumberInput>
+              <SelectComponent
+                options={optionsItems}
+                title="From"
+                handleChange={getFrom}
+              ></SelectComponent>
+            </Box>
+            <Box>
+              <NumberInput mb={0} isReadOnly>
+                <NumberInputField value={resultTemperature} />
+              </NumberInput>
+              <SelectComponent
+                options={optionsItems}
+                title="To"
+                handleChange={getTo}
+              ></SelectComponent>
+            </Box>
+          </SimpleGrid>
+        </Main>
+        <DarkModeSwitch />
+        <Footer textAlign="center">
+          <Text>
+            Made by Yehezkiel Gunawan using <Code>NextJS</Code> and{" "}
+            <Code>Chakra UI</Code>
+          </Text>
+        </Footer>
+        <CTA />
+      </Container>
+    </div>
   );
 }
