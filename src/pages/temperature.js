@@ -170,7 +170,7 @@ export default function Temperature() {
         <Main>
           <SimpleGrid columns={2} spacing={5}>
             <Box>
-              <NumberInput mb={0} min={-100}>
+              <NumberInput mb={0} defaultValue={0}>
                 <SelectComponent
                   options={optionsOperator}
                   handleChange={getOperator}

@@ -151,7 +151,7 @@ export default function Speed() {
         <Main>
           <SimpleGrid columns={2} spacing={5}>
             <Box>
-              <NumberInput mb={0} min={-100}>
+              <NumberInput mb={0} defaultValue={0}>
                 <NumberInputField onChange={getFromValue} />
               </NumberInput>
               <SelectComponent
@@ -161,7 +161,7 @@ export default function Speed() {
               ></SelectComponent>
             </Box>
             <Box>
-              <NumberInput mb={0} min={-100} isReadOnly>
+              <NumberInput mb={0} isReadOnly>
                 <NumberInputField value={resultSpeed} />
               </NumberInput>
               <SelectComponent
