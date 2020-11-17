@@ -19,6 +19,7 @@ const Index = () => (
   <div>
     <Head>
       <title>Yehez-ConverterSatuan</title>
+      <link rel="icon" href="https://www.flaticon.com/svg/static/icons/svg/3399/3399737.svg"></link>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
     <Container>
@@ -36,22 +37,22 @@ const Index = () => (
         >
           <ChakraLink href="/temperature">
             <Box boxShadow="base" p="6" rounded="md" bg="green.400">
-              Temperature <Icon name="external-link"></Icon>
+            🌡️Temperature <Icon name="external-link"></Icon>
             </Box>
           </ChakraLink>
           <ChakraLink href="/speed">
             <Box boxShadow="base" p="6" rounded="md" bg="green.400">
-              Speed <Icon name="external-link"></Icon>
+            🚗💨 Speed <Icon name="external-link"></Icon>
             </Box>
           </ChakraLink>
           <ChakraLink href="/weight">
             <Box boxShadow="base" p="6" rounded="md" bg="green.400">
-              Weight <Icon name="external-link"></Icon>
+            ⚖️ Weight <Icon name="external-link"></Icon>
             </Box>
           </ChakraLink>
           <ChakraLink href="/time">
             <Box boxShadow="base" p="6" rounded="md" bg="green.400">
-              Time <Icon name="external-link"></Icon>
+            ⏱️Time <Icon name="external-link"></Icon>
             </Box>
           </ChakraLink>
         </SimpleGrid>

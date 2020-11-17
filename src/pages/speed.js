@@ -143,10 +143,11 @@ export default function Speed() {
     <div>
       <Head>
         <title>Speed Converter</title>
+        <link rel="icon" href="https://www.flaticon.com/svg/static/icons/svg/3399/3399737.svg"></link>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Container>
-        <Hero title="Speed Converter"></Hero>
+        <Hero title="🚗💨Speed Converter"></Hero>
         <Main>
           <SimpleGrid columns={2} spacing={5}>
             <Box>

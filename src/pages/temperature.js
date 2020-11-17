@@ -162,10 +162,11 @@ export default function Temperature() {
     <div>
       <Head>
         <title>Temperature Converter</title>
+        <link rel="icon" href="https://www.flaticon.com/svg/static/icons/svg/3399/3399737.svg"></link>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Container>
-        <Hero title="Temperature Converter"></Hero>
+        <Hero title="🌡️Temperature Converter"></Hero>
         <Main>
           <SimpleGrid columns={2} spacing={5}>
             <Box>

@@ -34,6 +34,10 @@ let optionsTime = timeOptions.map((time) => (
   </option>
 ));
 
+function expo(x, f) {
+  return Number.parseFloat(x).toExponential(f);
+}
+
 function milisecondToSecond(number) {
   return number / 1000;
 }
@@ -43,27 +47,27 @@ function milisecondToMinute(number) {
 }
 
 function milisecondToHour(number) {
-  return number / 3.6e6;
+  return expo(number / 3.6e6, 5);
 }
 
 function milisecondToDay(number) {
-  return number / 8.64e7;
+  return expo(number / 8.64e7, 5);
 }
 
 function milisecondToWeek(number) {
-  return number / 6.048e8;
+  return expo(number / 6.048e8, 5);
 }
 
 function milisecondToMonth(number) {
-  return number / 2.628e9;
+  return expo(number / 2.628e9, 5);
 }
 
 function milisecondToYear(number) {
-  return number / 3.154e10;
+  return expo(number / 3.154e10, 5);
 }
 
 function milisecondToDecade(number) {
-  return number / 3.154e11;
+  return expo(number / 3.154e11, 5);
 }
 
 function secondToMilisecond(number) {
@@ -87,15 +91,15 @@ function secondToWeek(number) {
 }
 
 function secondToMonth(number) {
-  return number / 2.628e6;
+  return expo(number / 2.628e6, 5);
 }
 
 function secondToYear(number) {
-  return number / 3.154e7;
+  return expo(number / 3.154e7, 5);
 }
 
 function secondToDecade(number) {
-  return number / 3.154e8;
+  return expo(number / 3.154e8, 5);
 }
 
 function minuteToMilisecond(number) {
@@ -127,11 +131,11 @@ function minuteToYear(number) {
 }
 
 function minuteToDecade(number) {
-  return number / 5.256e6;
+  return expo(number / 5.256e6, 5);
 }
 
 function hourTomilisecond(number) {
-  return number * 3.6e6;
+  return expo(number * 3.6e6, 5);
 }
 
 function hourToSecond(number) {
@@ -163,7 +167,7 @@ function hourToDecade(number) {
 }
 
 function dayToMilisecond(number) {
-  return number * 8.64e7;
+  return expo(number * 8.64e7, 5);
 }
 
 function dayToSecond(number) {
@@ -195,7 +199,7 @@ function dayToDecade(number) {
 }
 
 function weekToMilisecond(number) {
-  return number * 6.048e8;
+  return expo(number * 6.048e8, 5);
 }
 
 function weekToSecond(number) {
@@ -227,11 +231,11 @@ function weekToDecade(number) {
 }
 
 function monthToMilisecond(number) {
-  return number * 2.628e9;
+  return expo(number * 2.628e9, 5);
 }
 
 function monthToSecond(number) {
-  return number * 2.628 + 6;
+  return expo(number * 2.628e6, 5);
 }
 
 function monthToMinute(number) {
@@ -259,11 +263,11 @@ function monthToDecade(number) {
 }
 
 function yearToMilisecond(number) {
-  return number * 3.154e10;
+  return expo(number * 3.154e10, 5);
 }
 
 function yearToSecond(number) {
-  return number * 3.154e7;
+  return expo(number * 3.154e7, 5);
 }
 
 function yearToMinute(number) {
@@ -291,15 +295,15 @@ function yearToDecade(number) {
 }
 
 function decadeToMilisecond(number) {
-  return number * 3.154e11;
+  return expo(number * 3.154e11, 5);
 }
 
 function decadeToSecond(number) {
-  return number * 3.154e8;
+  return expo(number * 3.154e8, 5);
 }
 
 function decadeToMinute(number) {
-  return number * 5.256e6;
+  return expo(number * 5.256e6, 5);
 }
 
 function decadeToHour(number) {
@@ -518,10 +522,11 @@ export default function Time() {
     <div>
       <Head>
         <title>Time Converter</title>
+        <link rel="icon" href="https://www.flaticon.com/svg/static/icons/svg/3399/3399737.svg"></link>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Container>
-        <Hero title="Time Converter"></Hero>
+        <Hero title="⏱️Time Converter"></Hero>
         <Main>
           <SimpleGrid columns={2} spacing={5}>
             <Box>

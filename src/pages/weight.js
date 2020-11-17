@@ -32,20 +32,24 @@ let optionsWeight = weightOptions.map((weight) => (
   </option>
 ));
 
+function expo(x, f) {
+  return Number.parseFloat(x).toExponential(f);
+}
+
 function TonneToKilogram(number) {
   return number * 1000;
 }
 
 function TonneToGram(number) {
-  return number * 1e6;
+  return expo(number * 1e6, 5);
 }
 
 function TonneToMiliGram(number) {
-  return number * 1e9;
+  return expo(number * 1e9, 5);
 }
 
 function TonneToMicroGram(number) {
-  return number * 1e12;
+  return expo(number * 1e12, 5);
 }
 
 function TonneToPound(number) {
@@ -65,11 +69,11 @@ function KiloGramToGram(number) {
 }
 
 function KiloGramToMiligram(number) {
-  return number * 1e6;
+  return expo(number * 1e6, 5);
 }
 
 function KiloGramToMicrogram(number) {
-  return number * 1e9;
+  return expo(number * 1e9, 5);
 }
 
 function KiloGramToPound(number) {
@@ -81,7 +85,7 @@ function KiloGramToOunce(number) {
 }
 
 function GramToTonne(number) {
-  return number / 1e6;
+  return expo(number / 1e6, 5);
 }
 
 function GramToKilogram(number) {
@@ -93,7 +97,7 @@ function GramToMiligram(number) {
 }
 
 function GramToMicrogram(number) {
-  return number * 1e6;
+  return expo(number * 1e6, 5);
 }
 
 function GramToPound(number) {
@@ -105,11 +109,11 @@ function GramToOunce(number) {
 }
 
 function MiligramToTonne(number) {
-  return number / 1e9;
+  return expo(number / 1e9, 5);
 }
 
 function MiligramToKilogram(number) {
-  return number / 1e6;
+  return expo(number / 1e6, 5);
 }
 
 function MiligramToGram(number) {
@@ -129,15 +133,15 @@ function MiligramToOunce(number) {
 }
 
 function MicrogramToTonne(number) {
-  return number / 1e12;
+  return expo(number / 1e12, 5);
 }
 
 function MicrogramToKilogram(number) {
-  return number / 1e9;
+  return expo(number / 1e9, 5);
 }
 
 function MicrogramToGram(number) {
-  return number / 1e6;
+  return expo(number / 1e6, 5);
 }
 
 function MicrogramToMiligram(number) {
@@ -149,7 +153,7 @@ function MicrogramToPound(number) {
 }
 
 function MicrogramToOunce(number) {
-  return number * 2.835e7;
+  return expo(number * 2.835e7, 5);
 }
 
 function PoundToTonne(number) {
@@ -193,7 +197,7 @@ function OunceToMiligram(number) {
 }
 
 function OunceToMicrogram(number) {
-  return number * 2835e7;
+  return expo(number * 2835e7, 5);
 }
 
 function OunceToPound(number) {
@@ -332,10 +336,11 @@ export default function weight() {
     <div>
       <Head>
         <title>Weight Converter</title>
+        <link rel="icon" href="https://www.flaticon.com/svg/static/icons/svg/3399/3399737.svg"></link>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Container>
-        <Hero title="Weight Converter"></Hero>
+        <Hero title="⚖️Weight Converter"></Hero>
         <Main>
           <SimpleGrid columns={2} spacing={5}>
             <Box>
